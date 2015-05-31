@@ -34,13 +34,14 @@ public class JettyServer {
         int port = 8080;
 
         String wardir = "markandspencer-resource.war";
-        String jetty_home = System.getProperty("jetty.home","..");
+
+        String jetty_home = System.getProperty("user.home");
 
         Server server = new Server(8084);
 
         WebAppContext webapp = new WebAppContext();
         webapp.setContextPath("/");
-        webapp.setWar(wardir);
+        webapp.setWar(jetty_home+"\\IdeaProjects\\UsbCopy\\marksandspencerstest\\markandspencer-resource\\target\\"+wardir);
         server.setHandler(webapp);
 
         server.start();

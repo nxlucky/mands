@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="markandspencer-resource:war">
+    <output-path>$PROJECT_DIR$/markandspencer-resource/target</output-path>
+    <root id="archive" name="markandspencer-resource.war">
+      <element id="artifact" artifact-name="markandspencer-resource:war exploded" />
+    </root>
+  </artifact>
+</component>
