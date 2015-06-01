@@ -44,7 +44,7 @@ public class MovieStoreService {
         calendar.set(Calendar.DAY_OF_YEAR, 1);
         Date yearStart = calendar.getTime();
         
-        calendar.add(Calendar.YEAR,1);
+        calendar.add(Calendar.YEAR, 1);
         Date yearEnd = calendar.getTime();
 
         List<MovieCatalogue> movieCatalogues = movieCatalogueRepository.listMoviesByDateAndGenre(yearStart, yearEnd, genre);
@@ -71,6 +71,10 @@ public class MovieStoreService {
         }
 
         final MovieCatalogue movie = this.movieCatalogueRepository.getOne(Integer.parseInt(movieBuyerObject.getMovieId()));
+
+        if(movie == null){
+            return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
+        }
 
         final double cost = abstractPaymentProcessor.process(movie.getPrice());
         final Subscriber subscriber = this.subscriberRepository.getOne(Integer.parseInt(movieBuyerObject.getUserId()));
