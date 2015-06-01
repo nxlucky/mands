@@ -18,12 +18,11 @@ public class Subscriber extends AbstractsModel {
     private String userName;
     private String password;
     private String userUUId;
+    private String creditCardNumber;
     @Enumerated(EnumType.STRING)
     private UserType userType;
-    @OneToMany(mappedBy = "subscriber")
-    private List<MovieOrder> movieOrders = new ArrayList<MovieOrder>();
-    @OneToMany(mappedBy = "subscriber")
-    private List<Payment> payments = new ArrayList<Payment>();
+
+
 
     public String getFirstName() {
         return firstName;
@@ -81,19 +80,13 @@ public class Subscriber extends AbstractsModel {
         this.userType = userType;
     }
 
-    public List<MovieOrder> getMovieOrders() {
-        return movieOrders;
+
+
+    public String getCreditCardNumber() {
+        return creditCardNumber;
     }
 
-    public void setMovieOrders(List<MovieOrder> movieOrders) {
-        this.movieOrders = movieOrders;
-    }
-
-    public List<Payment> getPayments() {
-        return payments;
-    }
-
-    public void setPayments(List<Payment> payments) {
-        this.payments = payments;
+    public void setCreditCardNumber(String creditCardNumber) {
+        this.creditCardNumber = creditCardNumber;
     }
 }

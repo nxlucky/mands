@@ -1,0 +1,34 @@
+<Array id="plusConfig" type="java.lang.String">
+    <Item>org.mortbay.jetty.webapp.WebInfConfiguration</Item>
+    <Item>org.mortbay.jetty.plus.webapp.EnvConfiguration</Item>
+    <Item>org.mortbay.jetty.plus.webapp.Configuration</Item>
+    <Item>org.mortbay.jetty.webapp.JettyWebXmlConfiguration</Item>
+    <Item>org.mortbay.jetty.webapp.TagLibConfiguration</Item>
+</Array>
+
+<call name="addLifeCycle">
+<arg>
+    <new class="org.mortbay.jetty.deployer.WebAppDeployer">
+        <set name="contexts"><ref id="Contexts"></ref></set>
+        <set name="webAppDir"><systemproperty default="." name="jetty.home">/webapps</systemproperty></set>
+        <set name="parentLoaderPriority">false</set>
+        <set name="extract">true</set>
+        <set name="allowDuplicates">false</set>
+        <set name="defaultsDescriptor"><systemproperty default="." name="jetty.home">/etc/webdefault.xml</systemproperty></set>
+        <set name="configurationClasses"><ref id="plusConfig"></ref></set>
+    </new>
+</arg>
+</call>
+
+
+<New id="inventory" class="org.mortbay.jetty.plus.naming.Resource">
+
+<Arg>jdbc/MySQLDS</Arg>
+<Arg>
+    <New class="com.mysql.jdbc.jdbc2.optional.MysqlConnectionPoolDataSource">
+        <Set name="Url">jdbc:mysql://localhost:3306/inventory</Set>
+        <Set name="User">root</Set>
+        <Set name="Password">147troublE</Set>
+    </New>
+</Arg>
+</New>

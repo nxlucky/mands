@@ -20,11 +20,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
 
+
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
+        http
+                .csrf().disable();
 
     }
 

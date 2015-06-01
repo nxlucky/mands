@@ -10,8 +10,14 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
+import payment.AbstractPaymentProcessor;
+import payment.RegisteredUserPaymentProcessor;
+import payment.RegularUserPaymentProcessor;
 import security.UserLookupInterceptor;
 import web.CurrentRequestInterceptor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Ugo on 02/05/2015.
@@ -19,8 +25,11 @@ import web.CurrentRequestInterceptor;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan(basePackages = {"config","controllers","security","service"})
+@ComponentScan(basePackages = {"config","controllers","security","service","payment"})
 public class WebConfig extends WebMvcConfigurerAdapter{
+
+    private static double DISCOUNT_PERCENTAGE = 25;
+    private static  double NO_DISCOUNT_PERCENTAGE = 0;
 
 
     @Override
@@ -83,6 +92,24 @@ public class WebConfig extends WebMvcConfigurerAdapter{
                 defaultContentType(MediaType.APPLICATION_JSON).
                 mediaType("xml", MediaType.APPLICATION_XML).
                 mediaType("json", MediaType.APPLICATION_JSON);
+    }
+
+    @Bean(name = "abstractPaymentProcessors")
+    public List<AbstractPaymentProcessor> abstractPaymentProcessors(){
+        List<AbstractPaymentProcessor>abstractPaymentProcessors = new ArrayList<>();
+        abstractPaymentProcessors.add(registeredUserPaymentProcessor());
+        abstractPaymentProcessors.add(regularUserPaymentProcessor());
+        return abstractPaymentProcessors;
+    }
+
+    @Bean
+    public RegisteredUserPaymentProcessor registeredUserPaymentProcessor(){
+        return new RegisteredUserPaymentProcessor(DISCOUNT_PERCENTAGE);
+    }
+
+    @Bean
+    public RegularUserPaymentProcessor regularUserPaymentProcessor(){
+        return new RegularUserPaymentProcessor(NO_DISCOUNT_PERCENTAGE);
     }
 
 

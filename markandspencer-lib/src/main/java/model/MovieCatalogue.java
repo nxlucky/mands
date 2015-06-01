@@ -21,8 +21,9 @@ public class MovieCatalogue extends AbstractsModel {
     @Temporal(TemporalType.DATE)
     private Date releaseDate;
     private double price;
+
     @OneToMany(mappedBy = "movieCatalogue")
-    private List<MovieOrder> movieOrders = new ArrayList<MovieOrder>();
+    private List<Subscription> subscriptions;
 
     public String getTitle() {
         return title;
@@ -72,11 +73,5 @@ public class MovieCatalogue extends AbstractsModel {
         this.price = price;
     }
 
-    public List<MovieOrder> getMovieOrders() {
-        return movieOrders;
-    }
 
-    public void setMovieOrders(List<MovieOrder> movieOrders) {
-        this.movieOrders = movieOrders;
-    }
 }
