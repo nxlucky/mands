@@ -20,6 +20,7 @@ import util.SubscriptionType;
 import utils.MovieBuyerObject;
 
 import javax.annotation.Resource;
+import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -70,14 +71,24 @@ public class MovieStoreService {
             }
         }
 
-        final MovieCatalogue movie = this.movieCatalogueRepository.getOne(Integer.parseInt(movieBuyerObject.getMovieId()));
+        MovieCatalogue movie = null;
 
-        if(movie == null){
+        try{
+            movie = this.movieCatalogueRepository.getOne(Integer.parseInt(movieBuyerObject.getMovieId()));
+        }catch (EntityNotFoundException e){
+            return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
+        }
+
+
+
+        Subscriber subscriber = null;
+        try{
+            subscriber = this.subscriberRepository.getOne(Integer.parseInt(movieBuyerObject.getUserId()));
+        }catch (EntityNotFoundException e){
             return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
         }
 
         final double cost = abstractPaymentProcessor.process(movie.getPrice());
-        final Subscriber subscriber = this.subscriberRepository.getOne(Integer.parseInt(movieBuyerObject.getUserId()));
 
         if(!payForItem(cost,movieBuyerObject,subscriber)){
             return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
