@@ -3,6 +3,7 @@ package model;
 import util.SubscriptionType;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 
@@ -12,7 +13,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Subscription extends AbstractsModel {
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private SubscriptionType subscriptionType;
     private String userName;
     private String emailAddress;

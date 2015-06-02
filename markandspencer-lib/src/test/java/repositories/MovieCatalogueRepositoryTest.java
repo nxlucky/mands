@@ -1,14 +1,14 @@
 package repositories;
 
 import model.MovieCatalogue;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import util.Genre;
 
-import static org.junit.Assert.*;
+import java.util.Calendar;
 
 /**
  * Created by uchegc01 on 02/06/2015.
@@ -35,6 +35,34 @@ public class MovieCatalogueRepositoryTest {
 //
 //        assertTrue(movieCatalogues.size()==0);
     }
+
+    @Test
+    public void testAddMovieToCatalogue(){
+        MovieCatalogue movieCatalogue = movieCatalogueRepository.save(createDummyMovie());
+    }
+
+
+    public MovieCatalogue createDummyMovie(){
+
+        MovieCatalogue movieCatalogue = new MovieCatalogue();
+
+        movieCatalogue.setGenre(Genre.ADVENTURE);
+        movieCatalogue.setPrice(20);
+        Calendar calendar = Calendar.getInstance();
+
+        calendar.set(Calendar.YEAR,2014);
+        calendar.set(Calendar.MONTH,4);
+
+        movieCatalogue.setReleaseDate(calendar.getTime());
+
+        movieCatalogue.setSynopsis("once upon a time");
+        movieCatalogue.setUrl("http://localhost/movies");
+
+        return movieCatalogue;
+
+    }
+
+
 
 
 

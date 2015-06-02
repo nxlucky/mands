@@ -1,3 +1,22 @@
+
+# Eclipse
+.settings
+.project
+.classpath
+.settings
+bin
+.springBeans
+
+# Maven
 target
-.idea
+
+# Cucumber
+.bundle
+
+# Other
+.DS_Store
+tags
+
+# intelliJ
 *.iml
+.idea
