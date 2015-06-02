@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/markandspencer-lib/markandspencer-lib.iml" filepath="$PROJECT_DIR$/markandspencer-lib/markandspencer-lib.iml" />
       <module fileurl="file://$PROJECT_DIR$/markandspencer-resource/markandspencer-resource.iml" filepath="$PROJECT_DIR$/markandspencer-resource/markandspencer-resource.iml" />
-      <module fileurl="file://$PROJECT_DIR$/markandspencertest.iml" filepath="$PROJECT_DIR$/markandspencertest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/markandspencersparent.iml" filepath="$PROJECT_DIR$/markandspencersparent.iml" />
     </modules>
   </component>
 </project>

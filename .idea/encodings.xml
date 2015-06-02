@@ -4,10 +4,5 @@
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/markandspencer-lib" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/markandspencer-resource" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/markandspencer-resource/src/main/resources/applicationContext.xml" charset="windows-1252" />
-    <file url="file://$PROJECT_DIR$/markandspencer-resource/src/main/webapp/META-INF/context.xml" charset="windows-1252" />
-    <file url="file://$PROJECT_DIR$/markandspencer-resource/src/main/webapp/log4j.properties" charset="windows-1252" />
-    <file url="file://$PROJECT_DIR$/markandspencer-resource/src/main/webapp/log4j.xml" charset="windows-1252" />
-    <file url="file://$PROJECT_DIR$/markandspencer-resource/src/test-integration/java/acceptance/helper/markandspencer-resource.war" charset="windows-1252" />
   </component>
 </project>

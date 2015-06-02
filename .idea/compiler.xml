@@ -23,14 +23,12 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="markandspencer-lib" />
-        <module name="marksandspencerstest" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="markandspencer-lib" target="1.5" />
       <module name="markandspencer-resource" target="1.7" />
-      <module name="markandspencertest" target="1.5" />
-      <module name="marksandspencerstest" target="1.5" />
+      <module name="markandspencersparent" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

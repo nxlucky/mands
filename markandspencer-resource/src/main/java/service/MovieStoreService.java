@@ -1,5 +1,6 @@
 package service;
 
+import exceptions.MovieNotFoundException;
 import model.MovieCatalogue;
 
 import model.Subscriber;
@@ -71,22 +72,11 @@ public class MovieStoreService {
             }
         }
 
-        MovieCatalogue movie = null;
+        MovieCatalogue movie = this.movieCatalogueRepository.getByMovieId(Integer.parseInt(movieBuyerObject.getMovieId()));
+        if(movie == null)throw new MovieNotFoundException();
 
-        try{
-            movie = this.movieCatalogueRepository.getOne(Integer.parseInt(movieBuyerObject.getMovieId()));
-        }catch (EntityNotFoundException e){
-            return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
-        }
+        Subscriber subscriber = this.subscriberRepository.getSubscriberById(Integer.parseInt(movieBuyerObject.getUserId()));
 
-
-
-        Subscriber subscriber = null;
-        try{
-            subscriber = this.subscriberRepository.getOne(Integer.parseInt(movieBuyerObject.getUserId()));
-        }catch (EntityNotFoundException e){
-            return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
-        }
 
         final double cost = abstractPaymentProcessor.process(movie.getPrice());
 

@@ -19,4 +19,7 @@ public interface MovieCatalogueRepository extends JpaRepository<MovieCatalogue,S
 
     @Query("SELECT m FROM MovieCatalogue m WHERE m.releaseDate BETWEEN :yearStart AND :yearEnd AND m.genre =:genre")
     public List<MovieCatalogue> listMoviesByDateAndGenre(@Param("yearStart")Date yearStart,@Param("yearEnd")Date yearEnd,@Param("genre")Genre genre);
+
+    @Query("SELECT m FROM MovieCatalogue m WHERE m.id =:movieId")
+    public MovieCatalogue getByMovieId(@Param("movieId")int movieId);
 }
